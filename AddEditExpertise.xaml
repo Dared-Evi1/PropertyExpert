@@ -1,0 +1,290 @@
+﻿<Page x:Class="Diplom.AddEditExpertise"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Diplom"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1050" FontFamily="Montserrat"
+      Title="Добавление/Редактирование экспертизы">
+
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="450"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <!-- Заголовок раздела: Объект недвижимости -->
+                <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Text="ОБЪЕКТ НЕДВИЖИМОСТИ" 
+                          FontSize="18" FontWeight="Bold"  HorizontalAlignment="Center"/>
+
+
+
+                <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" Height="28">
+                    <TextBlock Text="Район" FontSize="16" Height="25" MinWidth="120" Width="180" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <ComboBox Name="DistrictComboBox" Text="{Binding Realties.District}" Width="250" FontSize="16" Height="28" SelectionChanged="DistrictComboBox_SelectionChanged">
+                        <TextBlock Text="Демский"></TextBlock>
+                        <TextBlock Text="Калининский"></TextBlock>
+                        <TextBlock Text="Кировский"></TextBlock>
+                        <TextBlock Text="Ленинский"></TextBlock>
+                        <TextBlock Text="Октябрьский"></TextBlock>
+                        <TextBlock Text="Орджоникидзевский"></TextBlock>
+                        <TextBlock Text="Советский"></TextBlock>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="0" Grid.Row="3" Orientation="Horizontal">
+                    <TextBlock Text="Микрорайон" FontSize="16" Height="25" MinWidth="120" Width="180" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Text="{Binding Realties.Neighborhood}" FontSize="16" Height="28" Width="250"></TextBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal">
+                    <TextBlock Text="Улица" FontSize="16" Height="25" Width="80" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <Button Name="AddStreet" Content="Добавить" Width="90" Click="AddStreet_Click"></Button>
+                    <ComboBox Name="StreetComboBox" Width="250" FontSize="16" Height="28"
+              DisplayMemberPath="Name_Street" SelectedValuePath="Street_ID"
+              SelectedValue="{Binding Realties.ID_Street}">
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="0" Grid.Row="5" Orientation="Horizontal">
+                    <TextBlock Text="Дом" FontSize="16" Height="25" MinWidth="120" Width="180" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Text="{Binding Realties.House}" FontSize="16" Height="28" Width="250"></TextBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="0" Grid.Row="6" Orientation="Horizontal" >
+                    <TextBlock Text="Квартира" FontSize="16" Height="25" MinWidth="120" Width="180" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Text="{Binding Realties.Apartment_number}" FontSize="16" Width="250" Height="25"></TextBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="0" Grid.Row="7" Orientation="Horizontal">
+                    <TextBlock Text="Площадь (м²)" FontSize="16" Height="25" MinWidth="120" Width="180" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Text="{Binding Realties.Area, StringFormat={}{0:N2}}" FontSize="16" Height="25" Width="250"></TextBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="0" Grid.Row="8" Orientation="Horizontal">
+                    <TextBlock Text="Этаж" FontSize="16" Height="25" MinWidth="120" Width="180" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Text="{Binding Realties.Floor}" FontSize="16" Height="25" Width="100" Margin="0,0,10,0"></TextBox>
+                    <TextBlock Text="из" FontSize="16" Height="25" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Text="{Binding Realties.Total_Floors}" FontSize="16" Height="25" Width="100" Margin="10,0,0,0"></TextBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="0" Grid.Row="9" Orientation="Horizontal">
+                    <TextBlock Text="Балкон" FontSize="16" Height="25" MinWidth="120" Width="180" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <ComboBox Name="BalconyComboBox" Width="250" FontSize="16" Height="30"
+                              Text="{Binding Realties.Balcony}">
+                        <TextBlock>имеется</TextBlock>
+                        <TextBlock>не имеется</TextBlock>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="0" Grid.Row="10" Orientation="Horizontal">
+                    <TextBlock Text="Мебель" FontSize="16" Height="25" MinWidth="120" Width="180" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <ComboBox Name="FurnitureComboBox" FontSize="16" Height="30" Width="250"
+                             Text="{Binding Realties.Furniture}">
+                        <TextBlock>Нет</TextBlock>
+                        <TextBlock>Да</TextBlock>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Новые поля: Материал стен -->
+                <StackPanel Grid.Column="0" Grid.Row="11" Orientation="Horizontal">
+                    <TextBlock Text="Материал стен" FontSize="16" Height="25" MinWidth="120" Width="180" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <ComboBox Name="WallMaterialComboBox" FontSize="16" Height="30" Width="250"
+                              Text="{Binding Realties.Wall_Material}">
+                        <TextBlock>Кирпич</TextBlock>
+                        <TextBlock>Панель</TextBlock>
+                        <TextBlock>Дерево</TextBlock>
+
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Новые поля: Назначение (количество комнат) -->
+                <StackPanel Grid.Column="0" Grid.Row="12" Orientation="Horizontal">
+                    <TextBlock Text="Назначение (комнат)" FontSize="16" Height="25" MinWidth="120" Width="180" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Name="PurposeTextBox" TextChanged="PurposeTextBox_TextChanged"  Text="{Binding Realties.Purpose, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Height="25" Width="250"></TextBox>
+                </StackPanel>
+
+                <!-- Новые поля: Отделка -->
+                <StackPanel Grid.Column="0" Grid.Row="13" Orientation="Horizontal">
+                    <TextBlock Text="Отделка" FontSize="16" Height="25" MinWidth="120" Width="180" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <ComboBox Name="FinishingComboBox" FontSize="16" Height="30" Width="250"
+                              Text="{Binding Realties.Finishing}">
+                        <TextBlock>Без отделки</TextBlock>
+                        <TextBlock>Черновая</TextBlock>
+                        <TextBlock>Чистовая</TextBlock>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="0" Grid.Row="14" Orientation="Horizontal">
+                    <TextBlock Text="Дата размещения" FontSize="16" Height="25" MinWidth="120" Width="180" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <DatePicker Name="ListingDate" SelectedDate="{Binding Realties.Listing_Date}" FontSize="16" Width="250" Height="30"></DatePicker>
+                </StackPanel>
+
+                <!-- Правая колонка - изображение и эксперт -->
+                <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="8" Orientation="Vertical" Margin="10">
+                    <TextBlock Text="Фотография объекта" FontSize="16" Height="25" Margin="5"></TextBlock>
+                    <Image Width="250" Height="250" Name="RealtyImage">
+                        <Image.Source>
+                            <Binding Path="Realties.RealtiesPhoto">
+                                <Binding.TargetNullValue>
+                                    <ImageSource>
+                                        /Res/PictureRealties.jpeg
+                                    </ImageSource>
+                                </Binding.TargetNullValue>
+                            </Binding>
+                        </Image.Source>
+                    </Image>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="10" Grid.RowSpan="5" Orientation="Vertical" Margin="10">
+                    <TextBlock Text="Ответственный эксперт" FontSize="16" HorizontalAlignment="Center" Height="25" Margin="5"></TextBlock>
+                    <ComboBox Name="ExpertComboBox" FontSize="16" Height="30" Width="250"
+                              SelectedValue="{Binding Expertise.ID_Expert}" DisplayMemberPath="FIO" SelectedValuePath="ID_Expert">
+                    </ComboBox>
+                    <TextBlock Text="Уголовное дело №" FontSize="16" Height="25" Margin="5" HorizontalAlignment="Center"></TextBlock>
+                    <ComboBox Name="CaseComboBox" FontSize="16" Height="30" Width="250"
+                              SelectedValue="{Binding Expertise.ID_Case}" DisplayMemberPath="Number_Case" SelectedValuePath="Number_Case"></ComboBox>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="Новое дело " Name="AddCase" Click="AddCase_Click"></Button>
+                        <Button Content="Изменить дело " Name="EditCase" Click="EditCase_Click" ></Button>
+                    </StackPanel>
+                        
+
+                </StackPanel>
+
+
+                <!-- Секция выбора аналогов -->
+                <Grid Grid.Row="15" Grid.ColumnSpan="2" Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="123.5"/>
+                        <ColumnDefinition Width="86.5"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,123,0">
+                        <TextBlock Text="Доступные аналоги:" FontSize="14" FontWeight="Bold" Margin="0,0,0,5"/>
+                        <ListBox Name="AvailableAnalogsList" Height="130" GotFocus="AvailableAnalogsList_GotFocus"
+                 SelectionChanged="AvailableAnalogsList_SelectionChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical" Margin="2">
+                                        <TextBlock Text="{Binding Address}" FontWeight="Bold" FontSize="12" TextTrimming="CharacterEllipsis"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Area}" Margin="0,0,10,0" FontSize="11" Foreground="Gray"/>
+                                            <TextBlock Text="{Binding Rooms}" Margin="0,0,10,0" FontSize="11" Foreground="Gray"/>
+                                            <TextBlock Text="{Binding Floor}" FontSize="11" Foreground="Gray"/>
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding Price}" FontSize="11" FontWeight="SemiBold" Foreground="Green"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+
+                    <!-- Кнопки управления -->
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Grid.ColumnSpan="2">
+                        <Button Content="➡" Name="AddAnalogButton" Click="AddAnalogButton_Click"  
+                ToolTip="Добавить выбранный аналог" IsEnabled="False" Margin="5" Height="30"/>
+                        <Button Content="⬅" Name="RemoveAnalogButton" Click="RemoveAnalogButton_Click"
+                ToolTip="Удалить выбранный аналог" IsEnabled="False" Margin="5" Height="30"/>
+                        <Button Name="AddAnalog" Content="Добавить аналог" Click="AddAnalog_Click" Margin="5" Height="30"/>
+                        <Button Name="EditAnalog" IsEnabled="False" Content="Изменить аналог" Click="EditAnalog_Click" Margin="5" Height="30"/>
+
+                    </StackPanel>
+
+                    <!-- Выбранные аналоги -->
+                    <StackPanel Grid.Column="3">
+                        <TextBlock Text="Выбранные аналоги:" FontSize="14" FontWeight="Bold" Margin="0,0,0,5"/>
+                        <ListBox Name="SelectedAnalogsList" Height="130" GotFocus="SelectedAnalogsList_GotFocus"
+         SelectionChanged="SelectedAnalogsList_SelectionChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical" Margin="2">
+                                        <!-- Добавьте FallbackValue для отладки -->
+                                        <TextBlock Text="{Binding Address, FallbackValue='[Загрузка адреса...]'}" 
+                           FontWeight="Bold" FontSize="12" TextTrimming="CharacterEllipsis"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Area, FallbackValue='[0 м²]'}" 
+                               Margin="0,0,10,0" FontSize="11" Foreground="Gray"/>
+                                            <TextBlock Text="{Binding Rooms, FallbackValue='[0-комн.]'}" 
+                               Margin="0,0,10,0" FontSize="11" Foreground="Gray"/>
+                                            <TextBlock Text="{Binding Floor, FallbackValue='[0/0]'}" 
+                               FontSize="11" Foreground="Gray"/>
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding Price, FallbackValue='[Цена...]'}" 
+                           FontSize="11" FontWeight="SemiBold" Foreground="Green"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </Grid>
+                <!-- Заголовок раздела: Данные эксперти6зы -->
+                <TextBlock Grid.Column="0" Grid.Row="16" Grid.ColumnSpan="2" Text="ДАННЫЕ ЭКСПЕРТИЗЫ" 
+                          FontSize="18" FontWeight="Bold" Margin="5" HorizontalAlignment="Center"/>
+
+                <!-- Поля экспертизы -->
+                <StackPanel Grid.Column="0" Grid.Row="17" Orientation="Horizontal">
+                    <TextBlock Text="Дата начала" FontSize="16" Height="25" MinWidth="120" Width="180" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <DatePicker Name="DateStart" SelectedDate="{Binding Expertise.Date_Start}" FontSize="16" Width="200" Height="30"></DatePicker>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="17" Orientation="Horizontal">
+                    <TextBlock Text="Дата окончания" FontSize="16" Height="25" Width="120" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <DatePicker Name="DateEnd" SelectedDate="{Binding Expertise.Date_End}" FontSize="16" Width="200" Height="30"></DatePicker>
+                </StackPanel>
+
+                <StackPanel Grid.Column="0" Grid.Row="18" Orientation="Horizontal">
+                    <TextBlock Text="Стоимость экспертизы" FontSize="16" Height="25" MinWidth="120" Width="180" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Text="{Binding Expertise.Cost, StringFormat={}{0:N2}}" FontSize="16" Height="25" Width="200"></TextBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Grid.Row="18" Orientation="Horizontal">
+                    <TextBlock Text="Статус" FontSize="16" Height="25"  Width="120" Margin="5" VerticalAlignment="Center"></TextBlock>
+                    <ComboBox Name="StatusComboBox" FontSize="16" Height="30" Width="200" IsEnabled="False"
+                              Text="{Binding Expertise.Status}">
+                        <TextBlock>В процессе</TextBlock>
+                        <TextBlock>Завершена</TextBlock>
+                        <TextBlock>Отменена</TextBlock>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Кнопка загрузки фото -->
+                <Button Grid.Column="1" Grid.Row="9" Width="175" Content="Загрузить фото" Name="LoadImage" Click="LoadImage_Click"></Button>
+
+
+                <!-- Кнопки сохранения/отмены и удаления аналога -->
+                <Button Content="Сохранить" Width="175" Grid.Row="19" Grid.Column="0" Name="Save" Click="Save_Click"></Button>
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

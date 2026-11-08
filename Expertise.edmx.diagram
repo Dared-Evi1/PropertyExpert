@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8cff4c04a4104501bb8bfa95bbc804f9" Name="Diagram1">
+        <EntityTypeShape EntityType="ExpertiseModel.Analog_Expertise" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpertiseModel.Analog_Properties" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpertiseModel.Case" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpertiseModel.Expertise" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpertiseModel.Experts" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpertiseModel.Post" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpertiseModel.Realties" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpertiseModel.Street" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExpertiseModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ExpertiseModel.FK_Analog_Expertise_Analog_Properties" ManuallyRouted="false" />
+        <AssociationConnector Association="ExpertiseModel.FK_Analog_Expertise_Expertise" ManuallyRouted="false" />
+        <AssociationConnector Association="ExpertiseModel.FK_Analog_Properties_Street" ManuallyRouted="false" />
+        <AssociationConnector Association="ExpertiseModel.FK_Expertise_Case" ManuallyRouted="false" />
+        <AssociationConnector Association="ExpertiseModel.FK_Expertise_Experts1" ManuallyRouted="false" />
+        <AssociationConnector Association="ExpertiseModel.FK_Expertise_Nedvizhemost" ManuallyRouted="false" />
+        <AssociationConnector Association="ExpertiseModel.FK_Experts_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="ExpertiseModel.FK_Realties_Street" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,430 @@
+
+        private static LaboratoryEntities _context;
+        public static LaboratoryEntities GetContext()
+        {
+            if (_context == null)
+                _context = new LaboratoryEntities();
+            return _context;
+        }
+
+
+
+        public string AnalogPhoto
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Image))
+                {
+                    return "/Res/" + Image;
+                }
+                else
+                {
+                    return "/Res/PictureRealties.jpeg";
+                }
+            }
+        }
+        public string FullAddress_Analog
+        {
+            get
+            {
+                var parts = new List<string>();
+
+                if (!string.IsNullOrWhiteSpace(City))
+                    parts.Add(City);
+
+                if (!string.IsNullOrWhiteSpace(District))
+                    parts.Add(District);
+
+                if (!string.IsNullOrWhiteSpace(Neighborhood))
+                    parts.Add(Neighborhood);
+
+                if (!string.IsNullOrWhiteSpace(Street))
+                    parts.Add(Street);
+
+                if (!string.IsNullOrWhiteSpace(House))
+                    parts.Add(House);
+
+                return parts.Count > 0 ? string.Join(", ", parts) : "Адрес не указан";
+            }
+        }
+
+        public string Area_Analog
+        {
+            get
+            {
+                return Area.ToString("N1") + " м²";
+            }
+        }
+
+        public string Floor_Analog
+        {
+            get
+            {
+                return $"{Floor}/{Total_Floors} эт.";
+            }
+        }
+
+        public string PriceFormatted
+        {
+            get
+            {
+                return Price.HasValue ? $"{Price.Value:N0} ₽" : "Цена не указана";
+            }
+        }
+
+        public string RoomsInfo
+        {
+            get
+            {
+                return $"{Purpose}-комн.";
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+        public string PriceRealties
+        {
+            get
+            {
+                if (Realties != null && Realties.Price.HasValue)
+                    return Realties.Price.Value.ToString("N2") + " ₽";
+                else
+                    return "Цена не определена";
+            }
+        }
+
+        public string Expert
+        {
+            get
+            {
+                if (Experts != null)
+                    return Experts.Surname + " " + Experts.Name + " " + Experts.Patronymic;
+                else
+                    return "Эксперт не назначен";
+            }
+        }
+
+        public string RealtiesPhoto
+        {
+            get
+            {
+                if (Realties != null && !string.IsNullOrEmpty(Realties.Image))
+                {
+                    return "/Res/" + Realties.Image;
+                }
+                else
+                {
+                    return "/Res/PictureRealties.jpeg";
+                }
+            }
+        }
+
+        public string Address1
+        {
+            get
+            {
+                if (Realties != null)
+                {
+                    var parts = new List<string>();
+
+                    if (!string.IsNullOrWhiteSpace(Realties.City))
+                        parts.Add(Realties.City);
+
+                    if (!string.IsNullOrWhiteSpace(Realties.District))
+                        parts.Add(Realties.District);
+
+                    if (!string.IsNullOrWhiteSpace(Realties.Neighborhood))
+                        parts.Add(Realties.Neighborhood);
+
+                    if (!string.IsNullOrWhiteSpace(Realties.Street))
+                        parts.Add(Realties.Street);
+
+                    if (!string.IsNullOrWhiteSpace(Realties.House))
+                        parts.Add(Realties.House);
+
+                    var address = string.Join(", ", parts);
+
+                    if (!string.IsNullOrWhiteSpace(Realties.Apartment_number))
+                        address += $", кв. {Realties.Apartment_number}";
+
+                    return !string.IsNullOrWhiteSpace(address) ? address : "Адрес не указан";
+                }
+                return "Адрес не указан";
+            }
+        }
+
+        public string ExpertisePeriod
+        {
+            get
+            {
+                if (Date_Start.HasValue && Date_End.HasValue)
+                {
+                    return $"{Date_Start.Value:dd.MM.yyyy HH:mm} - {Date_End.Value:dd.MM.yyyy HH:mm}";
+                }
+                else if (Date_Start.HasValue)
+                {
+                    return $"{Date_Start.Value:dd.MM.yyyy HH:mm} - не указано";
+                }
+                else if (Date_End.HasValue)
+                {
+                    return $"не указано - {Date_End.Value:dd.MM.yyyy HH:mm}";
+                }
+                return "Сроки не указаны";
+            }
+        }
+
+
+        public int Purpose1
+        {
+            get
+            {
+                return Realties?.Purpose ?? 0;
+            }
+        }
+
+        public string Area1
+        {
+            get
+            {
+                if (Realties != null)
+                    return Realties.Area.ToString("N1") + "м²";
+                else
+                    return "0 м²";
+            }
+        }
+
+        public string Floor1
+        {
+            get
+            {
+                if (Realties != null)
+                    return Realties.Floor + "/" + Realties.Total_Floors;
+                else
+                    return "0/0";
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public string PositionExpert
+        {
+            get
+            {
+                return Post.Post_Name;
+            }
+        }
+
+        public int Stag
+        {
+            get
+            {
+                DateTime today = DateTime.Today;
+                int years = today.Year - Date_Work.Year;
+
+                // Если день поступления на работу в этом году еще не наступил,
+                // вычитаем один год
+                if (Date_Work.Date > today.AddYears(-years))
+                {
+                    years--;
+                }
+
+                return years;
+            }
+        }
+
+        public string FIO
+        {
+            get
+            {
+                return this.Surname + " " + this.Name + " " + this.Patronymic;
+            }
+        }
+
+        public string FullAddress
+        {
+            get
+            {
+                var parts = new List<string>();
+
+                if (!string.IsNullOrWhiteSpace(Adress))
+                    parts.Add(Adress);
+
+                return parts.Count > 0 ? string.Join(", ", parts) : "Адрес не указан";
+            }
+        }
+
+        public string ExpertPhoto
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Images))
+                {
+                    return "/Res/" + Images;
+                }
+                else
+                {
+                    return "/Res/PictureExpert.jpg";
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public string RealtiesPhoto
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Image))
+                {
+                    return "/Res/" + Image;
+                }
+                else
+                {
+                    return "/Res/PictureRealties.jpeg";
+                }
+            }
+        }
+
+        // Новое вычисляемое свойство: полный адрес
+        public string FullAddress
+        {
+            get
+            {
+                var parts = new List<string>();
+
+                if (!string.IsNullOrWhiteSpace(City))
+                    parts.Add(City);
+
+                if (!string.IsNullOrWhiteSpace(District))
+                    parts.Add(District);
+
+                if (!string.IsNullOrWhiteSpace(Neighborhood))
+                    parts.Add(Neighborhood);
+
+                if (!string.IsNullOrWhiteSpace(Street))
+                    parts.Add(Street);
+
+                if (!string.IsNullOrWhiteSpace(House))
+                    parts.Add("д. " + House);
+
+                var address = string.Join(", ", parts);
+
+                if (!string.IsNullOrWhiteSpace(Apartment_number))
+                    address += $", кв. {Apartment_number}";
+
+                return !string.IsNullOrWhiteSpace(address) ? address : "Адрес не указан";
+            }
+        }
+
+        // Новое вычисляемое свойство: форматированная площадь
+        public string AreaFormatted
+        {
+            get
+            {
+                return Area.ToString("N1") + " м²";
+            }
+        }
+
+        // Новое вычисляемое свойство: этажность
+        public string FloorInfo
+        {
+            get
+            {
+                return $"{Floor}/{Total_Floors} эт.";
+            }
+        }
+
+        // Новое вычисляемое свойство: информация о комнатах
+        public string RoomsInfo
+        {
+            get
+            {
+                return $"{Purpose}-комн.";
+            }
+        }
+
+        // Новое вычисляемое свойство: форматированная цена
+        public string PriceFormatted
+        {
+            get
+            {
+                return Price.HasValue ? $"{Price.Value:N0} ₽" : "Цена не указана";
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
